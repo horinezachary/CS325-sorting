@@ -11,7 +11,38 @@ using namespace std;
 int* fileInput(int* size);
 void fileOutput(int* arr, int arrsize);
 void printArray(int* arr, int arrsize);
+int* randomArray(int numelements);
 void insertionSort(int* arr, int arrsize);
+
+int main(){
+  int sampleSize = 10;
+  int* testValues = new int[sampleSize];  //array of test values
+  testValues[0] = 5000;
+  testValues[1] = 10000;
+  testValues[2] = 15000;
+  testValues[3] = 20000;
+  testValues[4] = 25000;
+  testValues[5] = 30000;
+  testValues[6] = 35000;
+  testValues[7] = 40000;
+  testValues[8] = 45000;
+  testValues[9] = 50000;
+  for (int i = 0; i < sampleSize; i++){
+    //generate random array
+    int* intarr = randomArray(testValues[i]);
+    //print num elements
+    cout << "Elements: " << testValues[i] << endl;
+    //print unsorted list
+    printArray(intarr,testValues[i]);
+    testTimes[i] = clock();
+    insertionSort(intarr,testValues[i]);
+    //print sorted list
+    printArray(intarr,testValues[i]);
+    //write sorted list to file
+    //fileOutput(intarr,testValues[i]);
+  }
+}
+
 void printArray(int* arr, int arrsize){ //function to print out an array
   cout << arr[0];
   for (int i = 1; i < arrsize; i++){
@@ -68,6 +99,14 @@ void fileOutput(int* arr, int arrsize){ //outputs an array to a file
   }
   outfile << endl;  //terminate the string
   outfile.close();  //close the file
+}
+int* randomArray(int numelements){  //generates an array of random integers between zero and 10000
+  int* arr = new int[numelements];
+  for (int i = 0; i < numelements; i++){
+    arr[i] = rand() % 10000;
+    //cout << arr[i] << endl;
+  }
+  return arr;
 }
 void insertionSort(int* arr, int arrsize){
   int i = 1;
