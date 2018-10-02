@@ -9,6 +9,14 @@ int main(){
   //print unsorted list
   printArray(intarr,intarrsize[0]);
 }
+
+void printArray(int* arr, int arrsize){
+  cout << arr[0];
+  for (int i = 1; i < arrsize; i++){
+    cout << "," << arr[i];
+  }
+  cout << endl;
+}
 int* fileInput(int* intarrsize){
   int* intarr;
   int intcounter = 0;
