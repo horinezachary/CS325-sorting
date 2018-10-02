@@ -5,9 +5,24 @@
 
 
 using namespace std;
+
+int* fileInput(int* size);
+void fileOutput(int* arr, int arrsize);
+void printArray(int* arr, int arrsize);
+void insertionSort(int* arr, int arrsize);
+
 int main(){
+  int* intarrsize = new int[1];
+  int* intarr = fileInput(intarrsize);
+
+  //print num elements
+  cout << "Elements: " << intarrsize[0] << endl;
+
   //print unsorted list
   printArray(intarr,intarrsize[0]);
+
+  insertionSort(intarr,intarrsize[0]);
+
 }
 
 void printArray(int* arr, int arrsize){
@@ -52,4 +67,17 @@ int* fileInput(int* intarrsize){
   inFile.close(); //Close the file
 
   return intarr;
+}
+void insertionSort(int* arr, int arrsize){
+  int i = 1;
+  while (i < arrsize){  //step through array and sort each value
+    int j = i;
+    while (j > 0 && arr[j-1] > arr[j]){ //alk through array with one value and move it down into place
+      int temp = arr[j];
+      arr[j] = arr[j-1];
+      arr[j-1] = temp;
+      j--;
+    }
+    i++;
+  }
 }
