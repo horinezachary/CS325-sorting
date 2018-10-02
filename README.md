@@ -1,13 +1,13 @@
 # CS325-sorting
 4)	(10 pts) Merge Sort and Insertion Sort Programs   
 Implement merge sort and insertion sort to sort an array/vector of integers.  Implement your algorithms in C++ and name your programs “mergesort.cpp” and “insertsort.cpp”.  Your programs should compile with the commands g++ mergesort.cpp and g++ insertsort.cpp.  Both programs should read inputs from a file called “data.txt” where the first value of each line is the number of integers that need to be sorted, followed by the integers.
-Example values for data.txt: \n
-	 	4 19 2 5 11  \n
-	 	8 1 2 3 4 5 6 1 2 \n
+Example values for data.txt:
+		4 19 2 5 11
+		8 1 2 3 4 5 6 1 2
 The output will be written to files called “merge.out” and “insert.out”.
-For the above example the output would be:\n
-	 	2 5 11 19\n
-	 	1 1 2 2 3 4 5 6  \n
+For the above example the output would be:
+		2 5 11 19
+		1 1 2 2 3 4 5 6
 
 To receive full credit all code must be commented.
 
