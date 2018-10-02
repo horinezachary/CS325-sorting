@@ -107,7 +107,10 @@ void mergeSort(int* arr, int min, int max){
 void merge(int* arr, int min, int mid, int max){
   int arrsort[max-min+1];
   int low1,low2,i;
+  cout << "A || ";
   printArray(arr,16);
+  cout << "B || "<< "MIN: " << min << " MID: " << mid << " MAX: " << max << endl;
+  cout << "B1|| ";
   printArray(arrsort,max-min+1);
   for (i = 0, low1 = min,low2 = mid+1; low1 <= mid && low2 <= max; i++){
     if (arr[low1] < arr[low2]){
@@ -118,7 +121,10 @@ void merge(int* arr, int min, int mid, int max){
       arrsort[i] = arr[low2];
       low2++;
     }
+    cout << "A || ";
     printArray(arr,16);
+    cout << "B || "<< "MIN: " << min << " MID: " << mid << " MAX: " << max << endl;
+    cout << "B2|| ";
     printArray(arrsort,max-min+1);
   }
   while(low1 <= mid){
@@ -126,18 +132,27 @@ void merge(int* arr, int min, int mid, int max){
     i++;
     low1++;
   }
+  cout << "A || ";
   printArray(arr,16);
+  cout << "B || "<< "MIN: " << min << " MID: " << mid << " MAX: " << max << endl;
+  cout << "B3|| ";
   printArray(arrsort,max-min+1);
   while(low2 <= max){
     arrsort[i] = arr[low2];
     i++;
     low2++;
   }
+  cout << "A || ";
   printArray(arr,16);
+  cout << "B || "<< "MIN: " << min << " MID: " << mid << " MAX: " << max << endl;
+  cout << "B4|| ";
   printArray(arrsort,max-min+1);
   for(i = min; i <= max; i++){
     arr[i] = arrsort[i-min];
+    cout << "A || ";
     printArray(arr,16);
+    cout << "B || "<< "MIN: " << min << " MID: " << mid << " MAX: " << max << endl;
+    cout << "B5|| ";
     printArray(arrsort,max-min+1);
   }
 }
