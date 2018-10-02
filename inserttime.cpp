@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -45,6 +44,7 @@ int main(){
   }
   //display timing table
   cout << "|| # ELEM. || CLOCK CYCLES " << endl;
+  cout << "++---------++--------------" << endl;
   for (int i = 0; i < sampleSize; i++){
     cout << "|| " << testValues[i] << "   || " << testTimes[i] << endl;
   }
