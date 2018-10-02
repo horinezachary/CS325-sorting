@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -23,6 +24,10 @@ int main(){
 
   insertionSort(intarr,intarrsize[0]);
 
+  //print sorted list
+  printArray(intarr,intarrsize[0]);
+  //write sorted list to file
+  fileOutput(intarr,intarrsize[0]);
 }
 
 void printArray(int* arr, int arrsize){
