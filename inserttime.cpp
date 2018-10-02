@@ -27,6 +27,7 @@ int main(){
   testValues[7] = 40000;
   testValues[8] = 45000;
   testValues[9] = 50000;
+  clock_t* testTimes = new clock_t[sampleSize]; //array of times
   for (int i = 0; i < sampleSize; i++){
     //generate random array
     int* intarr = randomArray(testValues[i]);
@@ -36,10 +37,16 @@ int main(){
     printArray(intarr,testValues[i]);
     testTimes[i] = clock();
     insertionSort(intarr,testValues[i]);
+    testTimes[i] = (((float)clock() - testTimes[i]));
     //print sorted list
     printArray(intarr,testValues[i]);
     //write sorted list to file
     //fileOutput(intarr,testValues[i]);
+  }
+  //display timing table
+  cout << "|| # ELEM. || CLOCK CYCLES " << endl;
+  for (int i = 0; i < sampleSize; i++){
+    cout << "|| " << testValues[i] << "   || " << testTimes[i] << endl;
   }
 }
 
