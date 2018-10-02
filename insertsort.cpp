@@ -73,6 +73,21 @@ int* fileInput(int* intarrsize){
 
   return intarr;
 }
+void fileOutput(int* arr, int arrsize){
+  ofstream outfile;
+  outfile.open("insert.out");
+  if (!outfile) {  //make sure the file exists
+    cout << "Unable to open insert.out";
+    exit(1);   // EXIT PROGRAM
+  }
+  outfile << arr[0];  //write first number
+  for (int i = 1; i < arrsize; i++){  //write the rest of the values, with a space before them
+    outfile << " " << arr[i];
+  }
+  outfile << endl;  //terminate the string
+  outfile.close();  //close the file
+}
+
 void insertionSort(int* arr, int arrsize){
   int i = 1;
   while (i < arrsize){  //step through array and sort each value
