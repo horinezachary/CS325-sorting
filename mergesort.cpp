@@ -93,66 +93,46 @@ void fileOutput(int* arr, int arrsize){
   outfile.close();  //close the file
 }
 void mergeSort(int* arr, int min, int max){
-  int mid;
-  cout <<"PRE || "<< "MIN: " << min << " MID: " << "-" << " MAX: " << max << endl;
-  if (min < max){
-    mid = (min+max)/2;
-    cout <<"POST|| "<< "MIN: " << min << " MID: " << mid << " MAX: " << max << endl;
+  if (max - min > 1){
+    int mid = (min+max)/2;
+    cout <<"|| "<< "MIN: " << min << " MID: " << mid << " MAX: " << max << endl;
     mergeSort(arr,min,mid);
-    mergeSort(arr,mid+1,max);
+    mergeSort(arr,mid,max);
     merge(arr,min,mid,max);
   }
 }
 
 void merge(int* arr, int min, int mid, int max){
-  int arrsort[max-min+1];
-  int low1,low2,i;
-  cout << "A || ";
-  printArray(arr,16);
-  cout << "B || "<< "MIN: " << min << " MID: " << mid << " MAX: " << max << endl;
-  cout << "B1|| ";
-  printArray(arrsort,max-min+1);
-  for (i = 0, low1 = min,low2 = mid+1; low1 <= mid && low2 <= max; i++){
-    if (arr[low1] < arr[low2]){
-      arrsort[i] = arr[low1];
-      low1++;
+  int* temp = new int[max-min];
+  int left_low = min;
+  int right_low = mid;
+  int count;
+  for (count = 0; left_low < mid && right_low < max; count++){
+    cout << min << "," << max << endl;
+    if (arr[left_low] > arr[right_low]){
+      temp[count] = arr[right_low];
+      right_low++;
     }
     else{
-      arrsort[i] = arr[low2];
-      low2++;
+      temp[count] = arr[left_low];
+      left_low++;
     }
-    cout << "A || ";
-    printArray(arr,16);
-    cout << "B || "<< "MIN: " << min << " MID: " << mid << " MAX: " << max << endl;
-    cout << "B2|| ";
-    printArray(arrsort,max-min+1);
   }
-  while(low1 <= mid){
-    arrsort[i] = arr[low1];
-    i++;
-    low1++;
+  while(left_low < mid){
+    cout << 1 << endl;
+    temp[count] = arr[left_low];
+    count++;
+    left_low++;
   }
-  cout << "A || ";
-  printArray(arr,16);
-  cout << "B || "<< "MIN: " << min << " MID: " << mid << " MAX: " << max << endl;
-  cout << "B3|| ";
-  printArray(arrsort,max-min+1);
-  while(low2 <= max){
-    arrsort[i] = arr[low2];
-    i++;
-    low2++;
+  while(right_low < max){
+    cout << 2 << endl;
+    temp[count] = arr[right_low];
+    count++;
+    right_low++;
   }
-  cout << "A || ";
-  printArray(arr,16);
-  cout << "B || "<< "MIN: " << min << " MID: " << mid << " MAX: " << max << endl;
-  cout << "B4|| ";
-  printArray(arrsort,max-min+1);
-  for(i = min; i <= max; i++){
-    arr[i] = arrsort[i-min];
-    cout << "A || ";
-    printArray(arr,16);
-    cout << "B || "<< "MIN: " << min << " MID: " << mid << " MAX: " << max << endl;
-    cout << "B5|| ";
-    printArray(arrsort,max-min+1);
+  for(int i = 0; i < max-min; i++){
+    cout << 3 << endl;
+    arr[min+i] = temp[i];
   }
+  delete[] temp;
 }
