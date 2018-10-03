@@ -95,7 +95,6 @@ void fileOutput(int* arr, int arrsize){
 void mergeSort(int* arr, int min, int max){
   if (max - min > 1){
     int mid = (min+max)/2;
-    cout <<"|| "<< "MIN: " << min << " MID: " << mid << " MAX: " << max << endl;
     mergeSort(arr,min,mid);
     mergeSort(arr,mid,max);
     merge(arr,min,mid,max);
@@ -108,7 +107,6 @@ void merge(int* arr, int min, int mid, int max){
   int right_low = mid;
   int count;
   for (count = 0; left_low < mid && right_low < max; count++){
-    cout << min << "," << max << endl;
     if (arr[left_low] > arr[right_low]){
       temp[count] = arr[right_low];
       right_low++;
@@ -119,19 +117,16 @@ void merge(int* arr, int min, int mid, int max){
     }
   }
   while(left_low < mid){
-    cout << 1 << endl;
     temp[count] = arr[left_low];
     count++;
     left_low++;
   }
   while(right_low < max){
-    cout << 2 << endl;
     temp[count] = arr[right_low];
     count++;
     right_low++;
   }
   for(int i = 0; i < max-min; i++){
-    cout << 3 << endl;
     arr[min+i] = temp[i];
   }
   delete[] temp;
