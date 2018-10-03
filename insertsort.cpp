@@ -92,7 +92,7 @@ void insertionSort(int* arr, int arrsize){
   int i = 1;
   while (i < arrsize){  //step through array and sort each value
     int j = i;
-    while (j > 0 && arr[j-1] > arr[j]){ //alk through array with one value and move it down into place
+    while (j > 0 && arr[j-1] > arr[j]){ //walk through array with one value and move it down into place
       int temp = arr[j];
       arr[j] = arr[j-1];
       arr[j-1] = temp;
