@@ -118,16 +118,41 @@ int* randomArray(int numelements){  //generates an array of random integers betw
   return arr;
 }
 void mergeSort(int* arr, int min, int max){
-  int mid;
-  cout <<"PRE || "<< "MIN: " << min << " MID: " << "-" << " MAX: " << max << endl;
-  if (min < max){
-    mid = (min+max)/2;
-    cout <<"POST|| "<< "MIN: " << min << " MID: " << mid << " MAX: " << max << endl;
+  if (max - min > 1){
+    int mid = (min+max)/2;
     mergeSort(arr,min,mid);
-    mergeSort(arr,mid+1,max);
+    mergeSort(arr,mid,max);
     merge(arr,min,mid,max);
   }
 }
+
 void merge(int* arr, int min, int mid, int max){
-  
+  int* temp = new int[max-min];
+  int left_low = min;
+  int right_low = mid;
+  int count;
+  for (count = 0; left_low < mid && right_low < max; count++){
+    if (arr[left_low] > arr[right_low]){
+      temp[count] = arr[right_low];
+      right_low++;
+    }
+    else{
+      temp[count] = arr[left_low];
+      left_low++;
+    }
+  }
+  while(left_low < mid){
+    temp[count] = arr[left_low];
+    count++;
+    left_low++;
+  }
+  while(right_low < max){
+    temp[count] = arr[right_low];
+    count++;
+    right_low++;
+  }
+  for(int i = 0; i < max-min; i++){
+    arr[min+i] = temp[i];
+  }
+  delete[] temp;
 }
