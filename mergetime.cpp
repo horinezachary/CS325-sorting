@@ -15,7 +15,7 @@ void mergeSort(int* arr, int min, int max);
 void merge(int* arr, int min, int mid, int max);
 
 int main(){
-  int sampleSize = 11;
+  int sampleSize = 10;
   int* testValues = new int[sampleSize];  //array of test values
   testValues[0] = 5000;
   testValues[1] = 10000;
@@ -27,7 +27,6 @@ int main(){
   testValues[7] = 40000;
   testValues[8] = 45000;
   testValues[9] = 50000;
-  testValues[10] = 100000;
   clock_t* testTimes = new clock_t[sampleSize]; //array of times
   for (int i = 0; i < sampleSize; i++){
     //generate random array
@@ -37,7 +36,7 @@ int main(){
     //print unsorted list
     printArray(intarr,testValues[i]);
     testTimes[i] = clock();
-    mergeSort(intarr,0,intarrsize[0]);
+    mergeSort(intarr,0,testValues[i]);
     testTimes[i] = (((float)clock() - testTimes[i]));
     //print sorted list
     printArray(intarr,testValues[i]);
