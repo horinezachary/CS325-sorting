@@ -15,18 +15,17 @@ void mergeSort(int* arr, int min, int max);
 void merge(int* arr, int min, int mid, int max);
 
 int main(){
-  int sampleSize = 10;
+  int sampleSize = 9;
   int* testValues = new int[sampleSize];  //array of test values
-  testValues[0] = 5000;
-  testValues[1] = 10000;
-  testValues[2] = 15000;
-  testValues[3] = 20000;
-  testValues[4] = 25000;
-  testValues[5] = 30000;
-  testValues[6] = 35000;
-  testValues[7] = 40000;
-  testValues[8] = 45000;
-  testValues[9] = 50000;
+  testValues[0] = 10000;
+  testValues[1] = 20000;
+  testValues[2] = 30000;
+  testValues[3] = 40000;
+  testValues[4] = 50000;
+  testValues[5] = 60000;
+  testValues[6] = 70000;
+  testValues[7] = 80000;
+  testValues[8] = 90000;
   clock_t* testTimes = new clock_t[sampleSize]; //array of times
   for (int i = 0; i < sampleSize; i++){
     //generate random array
