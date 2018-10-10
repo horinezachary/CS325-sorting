@@ -95,39 +95,39 @@ void fileOutput(int* arr, int arrsize){
 void mergeSort(int* arr, int min, int max){
   if (max - min > 1){
     int mid = (min+max)/2;
-    mergeSort(arr,min,mid);
-    mergeSort(arr,mid,max);
-    merge(arr,min,mid,max);
+    mergeSort(arr,min,mid); //split and run merge on the lower half
+    mergeSort(arr,mid,max); //split and run merge on upper half
+    merge(arr,min,mid,max); //merge two lists after they have returned
   }
 }
 
 void merge(int* arr, int min, int mid, int max){
-  int* temp = new int[max-min];
-  int left_low = min;
-  int right_low = mid;
+  int* temp = new int[max-min]; //temporary array
+  int left_low = min; //iterative lower on left side
+  int right_low = mid;  //iterative lower on right side
   int count;
-  for (count = 0; left_low < mid && right_low < max; count++){
-    if (arr[left_low] > arr[right_low]){
+  for (count = 0; left_low < mid && right_low < max; count++){  //step through array
+    if (arr[left_low] > arr[right_low]){  //if the left side lowest value is smaller, add to the list
       temp[count] = arr[right_low];
       right_low++;
     }
-    else{
+    else{ //otherwise add the right side lowest value
       temp[count] = arr[left_low];
       left_low++;
     }
   }
-  while(left_low < mid){
+  while(left_low < mid){  //if there are values left on the left side, add them to the list
     temp[count] = arr[left_low];
     count++;
     left_low++;
   }
-  while(right_low < max){
+  while(right_low < max){ //if there are values left on the right side, add them to the list
     temp[count] = arr[right_low];
     count++;
     right_low++;
   }
-  for(int i = 0; i < max-min; i++){
+  for(int i = 0; i < max-min; i++){ //move the temp list to the array
     arr[min+i] = temp[i];
   }
-  delete[] temp;
+  delete[] temp;  //delete the temporary array
 }
