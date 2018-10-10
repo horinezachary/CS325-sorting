@@ -8,6 +8,7 @@
 using namespace std;
 
 vector<int*> fileInput(int* intarrsize);
+void fileOutput(vector<int*> intarrarr, int* arrsize);
 void printArray(int* arr, int arrsize);
 
 int main(){
@@ -46,5 +47,21 @@ vector<int*> fileInput(int* intarrsize){
     intarrarr.push_back(temp);  //push the array onto the array vector
   }
   return intarrarr;
+}
+void fileOutput(vector<int*> intarrarr, int* arrsize){
+  ofstream outfile;
+  outfile.open("stooge.out");
+  if (!outfile) {  //make sure the file exists
+    cout << "Unable to open insert.out";
+    exit(1);   // EXIT PROGRAM
+  }
+  for (int arrnum = 0; arrnum < intarrarr.size(); arrnum++){  //print all of the arrays available
+    outfile << intarrarr.at(arrnum)[0];  //write first number
+    for (int i = 1; i < arrsize[arrnum]; i++){  //write the rest of the values, with a space before them
+      outfile << " " << intarrarr.at(arrnum)[i];
+    }
+    outfile << endl;  //terminate the string
+  }
+  outfile.close();  //close the file
 }
   }
